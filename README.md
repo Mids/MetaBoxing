@@ -5,4 +5,6 @@
 
 ## Packages
 * Boxing Ring Large
-    * Upgrade all materials to URP
+  * Upgrade all materials to URP
+* Oculus Integration
+  * Upgrade everything to newest version

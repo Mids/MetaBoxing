@@ -73,3 +73,7 @@ crashlytics-build.properties
 
 # Downloaded Assets
 Assets/Boxing Ring Large*
+Assets/Oculus*
+
+
+Assets/Plugins/Android/
