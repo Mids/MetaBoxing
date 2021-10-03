@@ -1,11 +1,14 @@
 using UnityEngine;
 
-public class FollowTarget : MonoBehaviour
+namespace MetaBoxing
 {
-    public Transform target;
-
-    private void Update()
+    public class FollowTarget : MonoBehaviour
     {
-        transform.position = target.position;
+        public Transform target;
+
+        private void Update()
+        {
+            transform.position = target.position;
+        }
     }
 }
