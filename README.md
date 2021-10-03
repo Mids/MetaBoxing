@@ -1,10 +1,10 @@
 # MetaBoxing
 
 ## Environment
-* Unity 2020.3.18f1
+* Unity 2020.3.12f1
 
 ## Packages
 * Boxing Ring Large
-  * Upgrade all materials to URP
+  * Upgrade every material to URP
 * Oculus Integration
-  * Upgrade everything to newest version
+  * Upgrade everything to the newest version
