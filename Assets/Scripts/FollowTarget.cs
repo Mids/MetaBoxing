@@ -9,6 +9,7 @@ namespace MetaBoxing
         private void Update()
         {
             transform.position = target.position;
+            transform.rotation = target.rotation;
         }
     }
 }
