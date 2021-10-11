@@ -6,6 +6,11 @@ namespace MetaBoxing
     {
         public Transform head;
 
+        public void Start()
+        {
+            head = GameObject.Find("HeadTarget").transform;
+        }
+        
         private void Update()
         {
             var dir = head.position - transform.position;
