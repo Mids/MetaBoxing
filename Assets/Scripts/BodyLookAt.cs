@@ -15,7 +15,7 @@ namespace MetaBoxing
             var rotZ = Vector3.SignedAngle(Vector3.up, projZ, Vector3.forward);
             var rotX = Vector3.SignedAngle(Vector3.up, projX, Vector3.right);
 
-            transform.localRotation = Quaternion.Euler(rotX, 0, rotZ);
+            transform.rotation = Quaternion.Euler(rotX, 0, rotZ);
         }
     }
 }

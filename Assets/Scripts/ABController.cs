@@ -14,7 +14,7 @@ namespace MetaBoxing
         private void Start()
         {
             Assert.IsNotNull(kinematicBody, "Set the target");
-            _defaultRot = transform.rotation;
+            _defaultRot = transform.localRotation;
             _inverseDefaultRot = Quaternion.Inverse(_defaultRot);
             _ab = GetComponent<ArticulationBody>();
             Assert.IsNotNull(_ab, "You need a ArticulationBody component");
@@ -22,13 +22,15 @@ namespace MetaBoxing
 
         private void FixedUpdate()
         {
-            var targetAngle = (_inverseDefaultRot * kinematicBody.rotation).eulerAngles;
-            
+            var targetAngle = (_inverseDefaultRot * kinematicBody.localRotation).eulerAngles;
+
             if (_ab.linearLockX != ArticulationDofLock.LockedMotion)
             {
                 targetAngle.x = Mathf.DeltaAngle(0, targetAngle.x);
                 var drive = _ab.xDrive;
-                drive.target = Mathf.Clamp(targetAngle.x, drive.lowerLimit, drive.upperLimit);
+                if (_ab.linearLockX == ArticulationDofLock.LimitedMotion)
+                    targetAngle.x = Mathf.Clamp(targetAngle.x, drive.lowerLimit, drive.upperLimit);
+                drive.target = targetAngle.x;
                 _ab.xDrive = drive;
             }
 
@@ -36,7 +38,9 @@ namespace MetaBoxing
             {
                 targetAngle.y = Mathf.DeltaAngle(0, targetAngle.y);
                 var drive = _ab.yDrive;
-                drive.target = Mathf.Clamp(targetAngle.y, drive.lowerLimit, drive.upperLimit);
+                if (_ab.linearLockY == ArticulationDofLock.LimitedMotion)
+                    targetAngle.y = Mathf.Clamp(targetAngle.y, drive.lowerLimit, drive.upperLimit);
+                drive.target = targetAngle.y;
                 _ab.yDrive = drive;
             }
 
@@ -44,7 +48,9 @@ namespace MetaBoxing
             {
                 targetAngle.z = Mathf.DeltaAngle(0, targetAngle.z);
                 var drive = _ab.zDrive;
-                drive.target = Mathf.Clamp(targetAngle.z, drive.lowerLimit, drive.upperLimit);
+                if (_ab.linearLockZ == ArticulationDofLock.LimitedMotion)
+                    targetAngle.z = Mathf.Clamp(targetAngle.z, drive.lowerLimit, drive.upperLimit);
+                drive.target = targetAngle.z;
                 _ab.zDrive = drive;
             }
         }
