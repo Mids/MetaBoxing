@@ -23,13 +23,10 @@ namespace MetaBoxing
         private void FixedUpdate()
         {
             var targetAngle = (_inverseDefaultRot * kinematicBody.rotation).eulerAngles;
-            targetAngle.x = Mathf.DeltaAngle(0, targetAngle.x);
-            targetAngle.y = Mathf.DeltaAngle(0, targetAngle.y);
-            targetAngle.z = Mathf.DeltaAngle(0, targetAngle.z);
-
-
+            
             if (_ab.linearLockX != ArticulationDofLock.LockedMotion)
             {
+                targetAngle.x = Mathf.DeltaAngle(0, targetAngle.x);
                 var drive = _ab.xDrive;
                 drive.target = Mathf.Clamp(targetAngle.x, drive.lowerLimit, drive.upperLimit);
                 _ab.xDrive = drive;
@@ -37,6 +34,7 @@ namespace MetaBoxing
 
             if (_ab.linearLockY != ArticulationDofLock.LockedMotion)
             {
+                targetAngle.y = Mathf.DeltaAngle(0, targetAngle.y);
                 var drive = _ab.yDrive;
                 drive.target = Mathf.Clamp(targetAngle.y, drive.lowerLimit, drive.upperLimit);
                 _ab.yDrive = drive;
@@ -44,6 +42,7 @@ namespace MetaBoxing
 
             if (_ab.linearLockZ != ArticulationDofLock.LockedMotion)
             {
+                targetAngle.z = Mathf.DeltaAngle(0, targetAngle.z);
                 var drive = _ab.zDrive;
                 drive.target = Mathf.Clamp(targetAngle.z, drive.lowerLimit, drive.upperLimit);
                 _ab.zDrive = drive;
