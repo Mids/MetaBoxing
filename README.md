@@ -10,3 +10,6 @@
     -> Upgrade Project Materials to UniversalRP Materials
 * [Oculus Integration](https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022)
   * Upgrade everything to the newest version in the series of popups after importing
+  
+* [PUN 2](https://assetstore.unity.com/packages/tools/network/pun-2-free-119922)
+  * Set the app ID
