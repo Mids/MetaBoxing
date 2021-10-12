@@ -1,13 +1,12 @@
 ﻿using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
     private readonly string version = "1.0f";
-
     private readonly string userId = "KAIST";
-
 
     private void Awake()
     {
@@ -62,6 +61,10 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         var points = GameObject.Find("SpawnPoints").GetComponentsInChildren<Transform>();
         int idx = PhotonNetwork.CurrentRoom.PlayerCount;
 
-        PhotonNetwork.Instantiate("Player", points[idx].position, Quaternion.identity);
+        PhotonNetwork.Instantiate("Player", points[idx].position, points[idx].rotation);
+
+        var xrRig = GameObject.Find("XR Rig").GetComponent<XRRig>();
+        xrRig.MoveCameraToWorldLocation(points[idx].position + new Vector3(0, 0.8f, 0));
+        xrRig.RotateAroundCameraPosition(Vector3.up, points[idx].rotation.eulerAngles.y);
     }
 }
