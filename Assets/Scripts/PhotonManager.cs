@@ -65,6 +65,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
         var xrRig = GameObject.Find("XR Rig").GetComponent<XRRig>();
         xrRig.MoveCameraToWorldLocation(points[idx].position + new Vector3(0, 0.8f, 0));
-        xrRig.RotateAroundCameraPosition(Vector3.up, points[idx].rotation.eulerAngles.y);
+        xrRig.MatchRigUpCameraForward(Vector3.up, points[idx].forward);
     }
 }
