@@ -1,17 +1,20 @@
 using TMPro;
 using UnityEngine;
 
-public class CollisionDetector : MonoBehaviour
+namespace MetaBoxing
 {
-    public float score = 0;
-    public TextMeshPro tmp;
-
-    private void OnCollisionEnter(Collision other)
+    public class CollisionDetector : MonoBehaviour
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Hand"))
+        public float score = 0;
+        public TextMeshPro tmp;
+
+        private void OnCollisionEnter(Collision other)
         {
-            score += 1;
-            tmp.text = "" + score;
+            if (other.gameObject.layer == LayerMask.NameToLayer("Hand"))
+            {
+                score += 1;
+                tmp.text = "" + score;
+            }
         }
     }
 }

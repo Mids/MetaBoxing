@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 
-public class MyGizmo : MonoBehaviour
+namespace MetaBoxing
 {
-    public Color color = Color.yellow;
-
-    public float radius = 0.2f;
-
-
-    // Start is called before the first frame update
-    private void OnDrawGizmos()
+    public class MyGizmo : MonoBehaviour
     {
-        Gizmos.color = color;
-        Gizmos.DrawSphere(transform.position, radius);
+        public Color color = Color.yellow;
+
+        public float radius = 0.2f;
+
+
+        // Start is called before the first frame update
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = color;
+            Gizmos.DrawSphere(transform.position, radius);
+        }
     }
 }

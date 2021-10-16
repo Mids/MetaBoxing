@@ -1,23 +1,25 @@
-using MetaBoxing;
 using Photon.Pun;
 using UnityEngine;
 
-public class PlayerSetter : MonoBehaviour
+namespace MetaBoxing
 {
-    public BodyLookAt hips;
-    public FollowTarget left;
-    public FollowTarget right;
-
-    private void Start()
+    public class PlayerSetter : MonoBehaviour
     {
-        if (GetComponent<PhotonView>().IsMine)
-            SetPlayer();
-    }
+        public BodyLookAt hips;
+        public FollowTarget left;
+        public FollowTarget right;
 
-    public void SetPlayer()
-    {
-        hips.isPlayer = true;
-        left.isPlayer = true;
-        right.isPlayer = true;
+        private void Start()
+        {
+            if (GetComponent<PhotonView>().IsMine)
+                SetPlayer();
+        }
+
+        public void SetPlayer()
+        {
+            hips.isPlayer = true;
+            left.isPlayer = true;
+            right.isPlayer = true;
+        }
     }
 }
