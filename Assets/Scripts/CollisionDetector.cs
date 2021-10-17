@@ -1,3 +1,4 @@
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 
@@ -10,7 +11,8 @@ namespace MetaBoxing
 
         private void OnCollisionEnter(Collision other)
         {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Hand"))
+            if (gameObject.GetComponentInParent<PhotonView>().IsMine !=
+                other.gameObject.GetComponentInParent<PhotonView>().IsMine)
             {
                 score += 1;
                 tmp.text = "" + score;
