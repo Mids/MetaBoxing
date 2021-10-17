@@ -2,7 +2,7 @@
 
 namespace MetaBoxing
 {
-    public class MyGizmo : MonoBehaviour
+    public class SpawnPoint : MonoBehaviour
     {
         public Color color = Color.yellow;
 
