@@ -27,9 +27,14 @@ namespace MetaBoxing
         {
             if (other.gameObject.GetComponentInParent<PhotonView>().IsMine != isMyself)
             {
-                score += 1;
-                tmp.text = "" + score;
-                
+                var ab = other.gameObject.GetComponent<ArticulationBody>();
+                score += ab.velocity.magnitude;
+
+                if (score < 50)
+                    tmp.text = $"{(int) score}";
+                else
+                    tmp.text = "You win!";
+
                 var xDrive = body.xDrive;
                 xDrive.stiffness = 0;
                 body.xDrive = xDrive;
