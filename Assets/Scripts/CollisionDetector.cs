@@ -25,7 +25,11 @@ namespace MetaBoxing
 
         private void OnCollisionEnter(Collision other)
         {
-            if (other.gameObject.GetComponentInParent<PhotonView>().IsMine != isMyself)
+            if (other.gameObject.layer != LayerMask.NameToLayer("Player")) return;
+
+            var view = other.gameObject.GetComponentInParent<PhotonView>();
+
+            if (view != default && view.IsMine != isMyself)
             {
                 var ab = other.gameObject.GetComponent<ArticulationBody>();
                 score += ab.velocity.magnitude;
