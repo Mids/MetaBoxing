@@ -1,4 +1,3 @@
-using System;
 using Photon.Pun;
 using TMPro;
 using UnityEngine;
@@ -14,8 +13,8 @@ namespace MetaBoxing
         public bool isMyself = false;
 
         private float _defaultStiff;
-        private float _recoveryTime = 1f;
-        
+        private readonly float _recoveryTime = 1f;
+
 
         private void Start()
         {
@@ -34,10 +33,16 @@ namespace MetaBoxing
                 var xDrive = body.xDrive;
                 xDrive.stiffness = 0;
                 body.xDrive = xDrive;
-                
+
                 var zDrive = body.zDrive;
                 zDrive.stiffness = 0;
                 body.zDrive = zDrive;
+
+                if (isMyself) return;
+
+                var xrController = other.gameObject.GetComponent<ABController>()?.controller;
+                if (xrController != default)
+                    xrController.SendHapticImpulse(1f, 0.1f);
             }
         }
 
@@ -48,7 +53,7 @@ namespace MetaBoxing
                 var xDrive = body.xDrive;
                 xDrive.stiffness += _defaultStiff * Time.fixedDeltaTime / _recoveryTime;
                 body.xDrive = xDrive;
-                
+
                 var zDrive = body.zDrive;
                 zDrive.stiffness += _defaultStiff * Time.fixedDeltaTime / _recoveryTime;
                 body.zDrive = zDrive;

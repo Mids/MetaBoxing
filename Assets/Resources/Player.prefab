@@ -77,6 +77,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kinematicBody: {fileID: 5802195964363170022}
+  controller: {fileID: 0}
+  isLeft: 1
+  isRight: 0
 --- !u!1 &106245209584550735
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,6 +588,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kinematicBody: {fileID: 3645313624659962757}
+  controller: {fileID: 0}
+  isLeft: 0
+  isRight: 0
 --- !u!114 &3186994842520778999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,6 +671,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kinematicBody: {fileID: 964269929577441442}
+  controller: {fileID: 0}
+  isLeft: 0
+  isRight: 0
 --- !u!1 &4236644283959926698
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,6 +991,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kinematicBody: {fileID: 3517289616311094085}
+  controller: {fileID: 0}
+  isLeft: 0
+  isRight: 0
 --- !u!171741748 &106245210037459960
 ArticulationBody:
   m_ObjectHideFlags: 0
@@ -1097,6 +1109,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kinematicBody: {fileID: 1179019132652574364}
+  controller: {fileID: 0}
+  isLeft: 0
+  isRight: 0
 --- !u!171741748 &106245210344763710
 ArticulationBody:
   m_ObjectHideFlags: 0
@@ -1161,6 +1176,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kinematicBody: {fileID: 6254487933316903058}
+  controller: {fileID: 0}
+  isLeft: 0
+  isRight: 0
 --- !u!1 &7446036868566841644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,6 +1337,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kinematicBody: {fileID: 1247135070489989514}
+  controller: {fileID: 0}
+  isLeft: 0
+  isRight: 1
 --- !u!1001 &106245210175811349
 PrefabInstance:
   m_ObjectHideFlags: 0

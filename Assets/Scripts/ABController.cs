@@ -1,11 +1,15 @@
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace MetaBoxing
 {
     public class ABController : MonoBehaviour
     {
         public Transform kinematicBody;
+        public XRBaseController controller;
+        public bool isLeft = false;
+        public bool isRight = false;
 
         private ArticulationBody _ab;
 
@@ -14,6 +18,11 @@ namespace MetaBoxing
             Assert.IsNotNull(kinematicBody, "Set the target");
             _ab = GetComponent<ArticulationBody>();
             Assert.IsNotNull(_ab, "You need a ArticulationBody component");
+
+            if (isLeft)
+                controller = GameObject.Find("LeftHand Controller").GetComponent<XRController>();
+            if (isRight)
+                controller = GameObject.Find("RightHand Controller").GetComponent<XRController>();
         }
 
         private void FixedUpdate()
