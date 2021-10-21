@@ -603,6 +603,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b594a6f83bb50274dbcdaeb2932deebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxRef:
+    soundFXName: punch_new_unnamed_sound_fx
   score: 0
   tmp: {fileID: 858693823824971071}
   body: {fileID: 0}

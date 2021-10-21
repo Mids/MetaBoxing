@@ -1,3 +1,4 @@
+using OVR;
 using Photon.Pun;
 using TMPro;
 using UnityEngine;
@@ -6,6 +7,8 @@ namespace MetaBoxing
 {
     public class CollisionDetector : MonoBehaviour
     {
+        public SoundFXRef sfxRef;
+
         public float score = 0;
         public TextMeshPro tmp;
 
@@ -46,6 +49,8 @@ namespace MetaBoxing
                 var zDrive = body.zDrive;
                 zDrive.stiffness = 0;
                 body.zDrive = zDrive;
+
+                sfxRef.PlaySound();
 
                 if (isMyself) return;
 
