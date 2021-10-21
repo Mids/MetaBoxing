@@ -33,9 +33,10 @@ namespace MetaBoxing
                 var rootPos = kinematicBody.parent.position;
                 var handPos = kinematicBody.GetChild(0).position;
 
-                var angle = Vector3.Angle(rootPos - elbowPos, handPos - elbowPos);
+                var angle = 180f - Vector3.Angle(rootPos - elbowPos, handPos - elbowPos);
                 var drive = _ab.xDrive;
-                drive.target = 180f - angle;
+                drive.targetVelocity = (angle - drive.target) / Time.fixedDeltaTime;
+                drive.target = angle;
                 _ab.xDrive = drive;
                 return;
             }
@@ -47,8 +48,8 @@ namespace MetaBoxing
             {
                 targetAngle.x = Mathf.DeltaAngle(0, targetAngle.x);
                 var drive = _ab.xDrive;
-                // if (!_ab.name.Equals("LowerArm_L"))
                 targetAngle.x = Mathf.Clamp(targetAngle.x, drive.lowerLimit, drive.upperLimit);
+                drive.targetVelocity = (targetAngle.x - drive.target) / Time.fixedDeltaTime;
                 drive.target = targetAngle.x;
                 _ab.xDrive = drive;
             }
@@ -57,8 +58,8 @@ namespace MetaBoxing
             {
                 targetAngle.y = Mathf.DeltaAngle(0, targetAngle.y);
                 var drive = _ab.yDrive;
-                // if (!_ab.name.Equals("LowerArm_L"))
                 targetAngle.y = Mathf.Clamp(targetAngle.y, drive.lowerLimit, drive.upperLimit);
+                drive.targetVelocity = (targetAngle.y - drive.target) / Time.fixedDeltaTime;
                 drive.target = targetAngle.y;
                 _ab.yDrive = drive;
             }
@@ -67,8 +68,8 @@ namespace MetaBoxing
             {
                 targetAngle.z = Mathf.DeltaAngle(0, targetAngle.z);
                 var drive = _ab.zDrive;
-                // if (!_ab.name.Equals("LowerArm_L"))
                 targetAngle.z = Mathf.Clamp(targetAngle.z, drive.lowerLimit, drive.upperLimit);
+                drive.targetVelocity = (targetAngle.z - drive.target) / Time.fixedDeltaTime;
                 drive.target = targetAngle.z;
                 _ab.zDrive = drive;
             }
