@@ -32,7 +32,7 @@ namespace MetaBoxing
             if (view != default && view.IsMine != isMyself)
             {
                 var ab = other.gameObject.GetComponent<ArticulationBody>();
-                score += ab.velocity.magnitude;
+                score += (ab.velocity - body.velocity).magnitude;
 
                 if (score < 50)
                     tmp.text = $"{(int) score}";
