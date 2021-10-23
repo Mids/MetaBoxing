@@ -605,6 +605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfxRef:
     soundFXName: punch_new_unnamed_sound_fx
+  vfxRef: {fileID: 1570927096764274, guid: 643639841fb531e4ba8097fed4eb9ac7, type: 3}
   score: 0
   tmp: {fileID: 858693823824971071}
   body: {fileID: 0}

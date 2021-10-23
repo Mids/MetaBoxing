@@ -1,3 +1,4 @@
+using System.Collections;
 using OVR;
 using Photon.Pun;
 using TMPro;
@@ -8,6 +9,7 @@ namespace MetaBoxing
     public class CollisionDetector : MonoBehaviour
     {
         public SoundFXRef sfxRef;
+        public GameObject vfxRef;
 
         public float score = 0;
         public TextMeshPro tmp;
@@ -15,6 +17,7 @@ namespace MetaBoxing
         public ArticulationBody body;
         public bool isMyself = false;
 
+        private Vector3 _contactPoint;
         private float _defaultStiff;
         private readonly float _recoveryTime = 1f;
 
@@ -50,7 +53,8 @@ namespace MetaBoxing
                 zDrive.stiffness = 0;
                 body.zDrive = zDrive;
 
-                sfxRef.PlaySound();
+                _contactPoint = other.GetContact(0).point;
+                PlayHitFX();
 
                 if (isMyself) return;
 
@@ -72,6 +76,19 @@ namespace MetaBoxing
                 zDrive.stiffness += _defaultStiff * Time.fixedDeltaTime / _recoveryTime;
                 body.zDrive = zDrive;
             }
+        }
+
+        private void PlayHitFX()
+        {
+            StartCoroutine(PlayVFXAndDestroy());
+            sfxRef.PlaySound();
+        }
+
+        private IEnumerator PlayVFXAndDestroy()
+        {
+            var vfx = Instantiate(vfxRef, _contactPoint, Quaternion.identity);
+            yield return new WaitForSeconds(0.3f);
+            Destroy(vfx);
         }
     }
 }
