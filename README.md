@@ -13,3 +13,5 @@
   
 * [PUN 2](https://assetstore.unity.com/packages/tools/network/pun-2-free-119922)
   * Set the app ID
+
+* [Effect textures and prefabs](https://assetstore.unity.com/packages/vfx/particles/effect-textures-and-prefabs-109031)
