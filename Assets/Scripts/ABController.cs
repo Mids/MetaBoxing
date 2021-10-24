@@ -29,9 +29,9 @@ namespace MetaBoxing
             }
 
             if (isLeft)
-                controller = GameObject.Find("LeftHand Controller").GetComponent<XRController>();
+                controller = GameObject.Find("LeftHand Controller")?.GetComponent<XRController>();
             if (isRight)
-                controller = GameObject.Find("RightHand Controller").GetComponent<XRController>();
+                controller = GameObject.Find("RightHand Controller")?.GetComponent<XRController>();
         }
 
         private void FixedUpdate()
