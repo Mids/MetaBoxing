@@ -12,12 +12,21 @@ namespace MetaBoxing
         public bool isRight = false;
 
         private ArticulationBody _ab;
+        private float _defaultAngle;
 
         private void Start()
         {
             Assert.IsNotNull(kinematicBody, "Set the target");
             _ab = GetComponent<ArticulationBody>();
             Assert.IsNotNull(_ab, "You need a ArticulationBody component");
+
+            if (_ab.name.Equals("LowerArm_L") || _ab.name.Equals("LowerArm_R"))
+            {
+                var elbowPos = kinematicBody.position;
+                var rootPos = kinematicBody.parent.position;
+                var handPos = kinematicBody.GetChild(0).position;
+                _defaultAngle = 180f - Vector3.Angle(rootPos - elbowPos, handPos - elbowPos);
+            }
 
             if (isLeft)
                 controller = GameObject.Find("LeftHand Controller").GetComponent<XRController>();
@@ -33,7 +42,9 @@ namespace MetaBoxing
                 var rootPos = kinematicBody.parent.position;
                 var handPos = kinematicBody.GetChild(0).position;
 
-                var angle = 180f - Vector3.Angle(rootPos - elbowPos, handPos - elbowPos);
+                var angle = 180f - Vector3.Angle(rootPos - elbowPos, handPos - elbowPos) - _defaultAngle;
+                // angle = Mathf.Max(0, angle);
+                
                 var drive = _ab.xDrive;
                 drive.targetVelocity = (angle - drive.target) / Time.fixedDeltaTime;
                 drive.target = angle;
