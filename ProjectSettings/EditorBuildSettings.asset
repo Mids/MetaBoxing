@@ -8,9 +8,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/MultiTest.unity
     guid: a737e77b4cca9b044b9693906ec8da07
-  - enabled: 0
-    path: Assets/Scenes/Test.unity
-    guid: bc70d6e4301692740ba20079083ca425
   - enabled: 1
     path: Assets/Scenes/Arena.unity
     guid: 240dcd828fcbaca4aa6f48290d461167
