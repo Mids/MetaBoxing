@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
@@ -12,6 +13,7 @@ namespace MetaBoxing
         public ArticulationBody lowerArmLAB;
         public ArticulationBody upperArmRAB;
         public ArticulationBody lowerArmRAB;
+        private List<ArticulationBody> _abList;
 
         private AgentCollisionDetector _cd;
 
@@ -29,6 +31,7 @@ namespace MetaBoxing
         {
             _cd = GetComponentInChildren<AgentCollisionDetector>();
             if (opponent != default) opponent.opponent = this;
+            _abList = new List<ArticulationBody> {hipsAB, upperArmLAB, lowerArmLAB, upperArmRAB, lowerArmRAB};
         }
 
         public override void OnEpisodeBegin()
@@ -40,6 +43,12 @@ namespace MetaBoxing
             tmp.text = $"{(int) _myCumScore}";
 
             steps = 0;
+
+            foreach (var ab in _abList)
+            {
+                ab.jointPosition = new ArticulationReducedSpace(0, 0, 0);
+                ab.jointVelocity = new ArticulationReducedSpace(0, 0, 0);
+            }
         }
 
         public override void CollectObservations(VectorSensor sensor)
@@ -101,13 +110,13 @@ namespace MetaBoxing
             if (_myCumScore > 50)
             {
                 AddReward(1f);
-                print($"{GetCumulativeReward()} and win");
+                // print($"{GetCumulativeReward()} and win");
                 EndEpisode();
             }
             else if (_myCumNegScore > 50)
             {
                 AddReward(-1f);
-                print($"{GetCumulativeReward()} and lose");
+                // print($"{GetCumulativeReward()} and lose");
                 EndEpisode();
             }
 
