@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 31954529409752449}
   - component: {fileID: 31954529409752451}
-  - component: {fileID: 31954529409752448}
   - component: {fileID: 1064617914931529044}
   - component: {fileID: 2820064156369688183}
   m_Layer: 0
@@ -55,22 +54,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &31954529409752448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 31954529409752462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fff0960ef4ea6e04eac66b4a7fd2189d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RigLayers:
-  - m_Rig: {fileID: 0}
-    m_Active: 1
-  m_Effectors: []
 --- !u!114 &1064617914931529044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,12 +93,16 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 1000
+  MaxStep: 5000
   hipsAB: {fileID: 4877515195938063676}
   upperArmLAB: {fileID: 8567061738531578630}
   lowerArmLAB: {fileID: 2167112673804456049}
   upperArmRAB: {fileID: 1490197365577161581}
   lowerArmRAB: {fileID: 376163925030139882}
+  opponent: {fileID: 0}
+  myScore: 0
+  myNegScore: 0
+  tmp: {fileID: 784262363410246922}
 --- !u!135 &5844574724601226370
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -833,6 +820,18 @@ ArticulationBody:
   m_Immovable: 1
   m_UseGravity: 0
   m_CollisionDetectionMode: 0
+--- !u!114 &2954668627127018869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8184849227840353374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1c880c14b0f51d4f8a2ddf8fd70bf86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &7639301569253112138
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -956,9 +955,13 @@ PrefabInstance:
       propertyPath: m_UpdateWhenOffscreen
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -259972160606440404, guid: 0d4f87a42265ea24597bf50e800cff27, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 73974570425156367, guid: 0d4f87a42265ea24597bf50e800cff27, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 827075974287967996, guid: 0d4f87a42265ea24597bf50e800cff27, type: 3}
       propertyPath: m_Layer
@@ -978,7 +981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8572977776237535800, guid: 0d4f87a42265ea24597bf50e800cff27, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8879528566716807029, guid: 0d4f87a42265ea24597bf50e800cff27, type: 3}
       propertyPath: m_LocalPosition.y
