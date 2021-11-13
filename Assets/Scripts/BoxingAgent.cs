@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
@@ -14,6 +15,7 @@ namespace MetaBoxing
         public ArticulationBody upperArmRAB;
         public ArticulationBody lowerArmRAB;
         private List<ArticulationBody> _abList;
+        public List<Transform> colliderTransforms;
 
         private AgentCollisionDetector _cd;
 
@@ -27,11 +29,17 @@ namespace MetaBoxing
         public TextMeshPro tmp;
         public int steps = 0;
 
+        private Quaternion _rootInv = default;
+        private Vector3 _rootPos = default;
+
         public override void Initialize()
         {
             _cd = GetComponentInChildren<AgentCollisionDetector>();
+            colliderTransforms = GetComponentsInChildren<Collider>().Select(p => p.transform).ToList();
             if (opponent != default) opponent.opponent = this;
             _abList = new List<ArticulationBody> {hipsAB, upperArmLAB, lowerArmLAB, upperArmRAB, lowerArmRAB};
+            _rootInv = Quaternion.Inverse(transform.rotation);
+            _rootPos = transform.position;
         }
 
         public override void OnEpisodeBegin()
@@ -53,7 +61,26 @@ namespace MetaBoxing
 
         public override void CollectObservations(VectorSensor sensor)
         {
-            sensor.AddObservation(transform.position);
+            foreach (var ab in _abList)
+            {
+                if (ab.jointPosition.dofCount >= 1)
+                    sensor.AddObservation(ab.jointPosition[0]);
+                if (ab.jointPosition.dofCount >= 2)
+                    sensor.AddObservation(ab.jointPosition[1]);
+                if (ab.jointPosition.dofCount >= 3)
+                    sensor.AddObservation(ab.jointPosition[2]);
+            }
+
+            foreach (var t in colliderTransforms)
+                sensor.AddObservation(_rootInv * (t.position - _rootPos));
+
+            foreach (var t in opponent.colliderTransforms) 
+                sensor.AddObservation(_rootInv * (t.position - _rootPos));
+
+            sensor.AddObservation((opponent.colliderTransforms[0].position - colliderTransforms[1].position).magnitude);
+            sensor.AddObservation((opponent.colliderTransforms[0].position - colliderTransforms[2].position).magnitude);
+            sensor.AddObservation((opponent.colliderTransforms[1].position - colliderTransforms[0].position).magnitude);
+            sensor.AddObservation((opponent.colliderTransforms[2].position - colliderTransforms[0].position).magnitude);
         }
 
         public override void OnActionReceived(float[] vectorAction)
@@ -91,7 +118,6 @@ namespace MetaBoxing
 
         private void FixedUpdate()
         {
-            // TODO:
             if (myScore > 0)
             {
                 AddReward(myScore / 10f);
@@ -110,13 +136,10 @@ namespace MetaBoxing
             if (_myCumScore > 50)
             {
                 AddReward(1f);
-                // print($"{GetCumulativeReward()} and win");
                 EndEpisode();
             }
             else if (_myCumNegScore > 50)
             {
-                AddReward(-1f);
-                // print($"{GetCumulativeReward()} and lose");
                 EndEpisode();
             }
 

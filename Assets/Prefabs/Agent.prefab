@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 3
+    VectorObservationSize: 33
     NumStackedVectorObservations: 1
     VectorActionSize: 0a000000
     VectorActionDescriptions: []
@@ -99,10 +99,12 @@ MonoBehaviour:
   lowerArmLAB: {fileID: 2167112673804456049}
   upperArmRAB: {fileID: 1490197365577161581}
   lowerArmRAB: {fileID: 376163925030139882}
+  colliderTransforms: []
   opponent: {fileID: 0}
   myScore: 0
   myNegScore: 0
   tmp: {fileID: 784262363410246922}
+  steps: 0
 --- !u!135 &5844574724601226370
 SphereCollider:
   m_ObjectHideFlags: 0

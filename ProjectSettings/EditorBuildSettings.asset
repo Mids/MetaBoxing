@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/MultiTest.unity
     guid: a737e77b4cca9b044b9693906ec8da07
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Arena.unity
     guid: 240dcd828fcbaca4aa6f48290d461167
+  - enabled: 1
+    path: Assets/Scenes/TrainingScene.unity
+    guid: d62cfe61acb93be42bcc9ad05d0d71ee
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 3657e663d7e430f43926ab26e83e0b35, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: b9b1d319eead1e94b87e365032088d8c, type: 2}
