@@ -21,7 +21,7 @@ namespace MetaBoxing
             if (other.gameObject.GetComponentInParent<BoxingAgent>() == _myself) return;
 
             var ab = other.gameObject.GetComponent<ArticulationBody>();
-            var score = (ab.velocity - _body.velocity).magnitude;
+            var score = (ab.velocity - _body.velocity).sqrMagnitude;
 
             _myself.opponent.myScore += score;
             _myself.myNegScore += score;

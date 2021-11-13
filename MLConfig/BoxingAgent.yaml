@@ -18,16 +18,16 @@ BoxingAgent:
             strength: 1.0
     keep_checkpoints: 100
     checkpoint_interval: 200000
-    max_steps: 500000
+    max_steps: 5000000
     memory_size: 256
     time_horizon: 128
     sequence_length: 128
     summary_freq: 100000
     use_recurrent: false
     threaded: true
-#env_settings:
-#    env_path: ../Penguins/Builds/Penguins
-#    num_envs: 8
-#engine_settings:
-#    time_scale: 1
-#    no_graphics: true
+env_settings:
+    env_path: ./Builds/MetaBoxing
+    num_envs: 4
+engine_settings:
+    time_scale: 1
+    no_graphics: true

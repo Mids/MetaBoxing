@@ -144,7 +144,7 @@ namespace MetaBoxing
             }
 
             ++steps;
-            AddReward(-0.001f);
+            AddReward(-0.0005f);
             if (steps > 2000)
                 EndEpisode();
             RequestDecision();

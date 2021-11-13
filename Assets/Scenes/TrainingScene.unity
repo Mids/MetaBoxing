@@ -411,6 +411,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Agent (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1064617914931529044, guid: 9aa298acf1ca895499db48ffb2864146, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4877515195938063676, guid: 9aa298acf1ca895499db48ffb2864146, type: 3}
       propertyPath: m_ParentAnchorPosition.y
       value: 0.00014901935
@@ -494,6 +498,14 @@ PrefabInstance:
     - target: {fileID: 376163925030139882, guid: 9aa298acf1ca895499db48ffb2864146, type: 3}
       propertyPath: m_ParentAnchorRotation.z
       value: 0.05249971
+      objectReference: {fileID: 0}
+    - target: {fileID: 1064617914931529044, guid: 9aa298acf1ca895499db48ffb2864146, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: 5af50392b297e674ea60f8afb741696f, type: 3}
+    - target: {fileID: 1064617914931529044, guid: 9aa298acf1ca895499db48ffb2864146, type: 3}
+      propertyPath: m_BehaviorType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2167112673804456049, guid: 9aa298acf1ca895499db48ffb2864146, type: 3}
       propertyPath: m_ParentAnchorRotation.w
