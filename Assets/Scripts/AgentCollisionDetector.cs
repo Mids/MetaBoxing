@@ -22,9 +22,14 @@ namespace MetaBoxing
 
             var ab = other.gameObject.GetComponent<ArticulationBody>();
             var score = (ab.velocity - _body.velocity).sqrMagnitude;
+            score /= 2;
 
-            _myself.opponent.myScore += score;
-            _myself.myNegScore += score;
+            if (score > 1)
+            {
+                score *= score;
+                _myself.opponent.myScore += score;
+                _myself.myNegScore += score;
+            }
 
 
             var xDrive = _body.xDrive;
