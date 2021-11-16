@@ -120,15 +120,15 @@ namespace MetaBoxing
         {
             if (myScore > 0)
             {
-                AddReward(myScore / 10f);
                 _myCumScore += myScore;
+                AddReward(myScore * (_myCumScore / (_myCumScore + _myCumNegScore)) / 10f);
                 myScore = 0;
                 tmp.text = $"{(int) _myCumScore}";
             }
 
             if (myNegScore > 0)
             {
-                AddReward(myNegScore / -20f);
+                // AddReward(myNegScore / -20f);
                 _myCumNegScore += myNegScore;
                 myNegScore = 0;
             }
