@@ -414,7 +414,7 @@ PrefabInstance:
     - target: {fileID: 1064617914931529044, guid: 9aa298acf1ca895499db48ffb2864146, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 606c180ae91dd85489c717e3d6aca602, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4877515195938063676, guid: 9aa298acf1ca895499db48ffb2864146, type: 3}
       propertyPath: m_ParentAnchorPosition.y
       value: 0.00014901935

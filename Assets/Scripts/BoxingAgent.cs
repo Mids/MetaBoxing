@@ -74,7 +74,7 @@ namespace MetaBoxing
             foreach (var t in colliderTransforms)
                 sensor.AddObservation(_rootInv * (t.position - _rootPos));
 
-            foreach (var t in opponent.colliderTransforms) 
+            foreach (var t in opponent.colliderTransforms)
                 sensor.AddObservation(_rootInv * (t.position - _rootPos));
 
             sensor.AddObservation((opponent.colliderTransforms[0].position - colliderTransforms[1].position).magnitude);
@@ -118,19 +118,19 @@ namespace MetaBoxing
 
         private void FixedUpdate()
         {
-            if (myScore > 0)
-            {
-                _myCumScore += myScore;
-                AddReward(myScore * (_myCumScore / (_myCumScore + _myCumNegScore)) / 10f);
-                myScore = 0;
-                tmp.text = $"{(int) _myCumScore}";
-            }
-
             if (myNegScore > 0)
             {
                 // AddReward(myNegScore / -20f);
                 _myCumNegScore += myNegScore;
                 myNegScore = 0;
+                tmp.text = $"{(int) _myCumNegScore}";
+            }
+
+            if (myScore > 0)
+            {
+                _myCumScore += myScore;
+                AddReward(myScore * (_myCumScore / (_myCumScore + _myCumNegScore)) / 10f);
+                myScore = 0;
             }
 
             if (_myCumScore > 50)
