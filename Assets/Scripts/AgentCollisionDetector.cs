@@ -16,7 +16,17 @@ namespace MetaBoxing
 
         private void OnCollisionEnter(Collision other)
         {
-            if (other.gameObject.layer != LayerMask.NameToLayer("Agent")) return;
+            if (other.gameObject.layer != LayerMask.NameToLayer("Agent"))
+            {
+                if (other.gameObject.layer != LayerMask.NameToLayer("Player"))
+                    return;
+
+                var power = other.impulse.magnitude / 30;
+                _myself.myNegScore += power;
+
+                return;
+            }
+
 
             if (other.gameObject.GetComponentInParent<BoxingAgent>() == _myself) return;
 
