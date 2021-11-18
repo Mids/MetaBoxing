@@ -61,6 +61,10 @@ namespace MetaBoxing
 
         public override void CollectObservations(VectorSensor sensor)
         {
+            if (opponent == default || opponent.colliderTransforms.Count == 0 ||
+                opponent.colliderTransforms[0] == default)
+                return;
+
             foreach (var ab in _abList)
             {
                 if (ab.jointPosition.dofCount >= 1)
