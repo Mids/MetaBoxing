@@ -21,7 +21,7 @@ namespace MetaBoxing
             _right = transform.right;
             _up = transform.up;
 
-            if (PlayerPrefs.GetInt("IS3PP") == 0)
+            if (PlayerPrefs.GetInt("IS3PP") == 1)
                 offset = new Vector3(0, -1, 1);
         }
 

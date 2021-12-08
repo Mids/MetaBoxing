@@ -67,7 +67,7 @@ namespace MetaBoxing
 
             var offset = Vector3.zero;
 
-            if (PlayerPrefs.GetInt("IS3PP") == 0)
+            if (PlayerPrefs.GetInt("IS3PP") == 1)
                 offset = new Vector3(0, 1, -1);
 
             var xrRig = GameObject.Find("XR Rig").GetComponent<XRRig>();
