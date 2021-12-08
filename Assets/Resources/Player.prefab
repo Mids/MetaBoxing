@@ -75,6 +75,7 @@ MonoBehaviour:
   isPlayer: 0
   isLeft: 0
   target: {fileID: 0}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &8689618548905195510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +167,7 @@ MonoBehaviour:
   isPlayer: 0
   isLeft: 1
   target: {fileID: 0}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &4105535553481634025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1000,6 +1002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   head: {fileID: 0}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &2531580780325496881
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -65,8 +65,13 @@ namespace MetaBoxing
 
             PhotonNetwork.Instantiate("Player", points[idx].position, points[idx].rotation);
 
+            var offset = Vector3.zero;
+
+            if (PlayerPrefs.GetInt("IS3PP") == 0)
+                offset = new Vector3(0, 1, -1);
+
             var xrRig = GameObject.Find("XR Rig").GetComponent<XRRig>();
-            xrRig.MoveCameraToWorldLocation(points[idx].position + new Vector3(0, 0.8f, 0));
+            xrRig.MoveCameraToWorldLocation(points[idx].position + new Vector3(0, 0.8f, 0) + offset);
             xrRig.MatchRigUpCameraForward(Vector3.up, points[idx].forward);
         }
     }
