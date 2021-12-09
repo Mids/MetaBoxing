@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 
 namespace MetaBoxing
@@ -22,7 +23,7 @@ namespace MetaBoxing
             _up = transform.up;
 
             if (PlayerPrefs.GetInt("IS3PP") == 1)
-                offset = new Vector3(0, -1, 1);
+                offset = transform.GetComponentInParent<PhotonView>().transform.rotation * new Vector3(0, -0.5f, 1);
         }
 
         private void Update()
