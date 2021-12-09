@@ -63,12 +63,15 @@ namespace MetaBoxing
             var points = GameObject.Find("SpawnPoints").GetComponentsInChildren<Transform>();
             int idx = PhotonNetwork.CurrentRoom.PlayerCount;
 
-            PhotonNetwork.Instantiate("Player", points[idx].position, points[idx].rotation);
+            if (PlayerPrefs.GetInt("ISPHYSICS") == 1)
+                PhotonNetwork.Instantiate("Player", points[idx].position, points[idx].rotation);
+            else
+                PhotonNetwork.Instantiate("KinematicPlayer", points[idx].position, points[idx].rotation);
 
             var offset = Vector3.zero;
 
             if (PlayerPrefs.GetInt("IS3PP") == 1)
-                offset = new Vector3(0, 1, -1);
+                offset = points[idx].rotation * new Vector3(0, 1, -1);
 
             var xrRig = GameObject.Find("XR Rig").GetComponent<XRRig>();
             xrRig.MoveCameraToWorldLocation(points[idx].position + new Vector3(0, 0.8f, 0) + offset);
