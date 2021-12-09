@@ -65,6 +65,7 @@ namespace MetaBoxing
 
 // #if UNITY_EDITOR
 //             PlayerPrefs.SetInt("IS3PP", 1);
+//             PlayerPrefs.SetInt("ISPHYSICS", 0);
 // #endif
 
             if (PlayerPrefs.GetInt("ISPHYSICS") == 1)
