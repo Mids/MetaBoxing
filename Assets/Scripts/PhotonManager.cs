@@ -18,7 +18,10 @@ namespace MetaBoxing
 
             print(PhotonNetwork.SendRate);
 
-            PhotonNetwork.ConnectUsingSettings();
+            if (PhotonNetwork.IsConnected)
+                PhotonNetwork.JoinLobby();
+            else
+                PhotonNetwork.ConnectUsingSettings();
         }
 
         public override void OnConnectedToMaster()
@@ -81,6 +84,12 @@ namespace MetaBoxing
             var xrRig = GameObject.Find("XR Rig").GetComponent<XRRig>();
             xrRig.MoveCameraToWorldLocation(points[idx].position + new Vector3(0, 0.8f, 0) + offset);
             xrRig.MatchRigUpCameraForward(Vector3.up, points[idx].forward);
+        }
+
+        public void OnDestroy()
+        {
+            PhotonNetwork.LeaveRoom();
+            PhotonNetwork.LeaveLobby();
         }
     }
 }
