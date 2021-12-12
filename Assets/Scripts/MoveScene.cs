@@ -29,6 +29,11 @@ public class MoveScene : MonoBehaviour
     {
         PlayerPrefs.SetInt("IS3PP", is3pp ? 1 : 0);
         PlayerPrefs.SetInt("ISPHYSICS", isPhysics ? 1 : 0);
+        Load();
+    }
+
+    public void Load()
+    {
         SceneManager.LoadScene(sceneName);
     }
 }
