@@ -88,8 +88,10 @@ namespace MetaBoxing
 
         public void OnDestroy()
         {
-            PhotonNetwork.LeaveRoom();
-            PhotonNetwork.LeaveLobby();
+            if(PhotonNetwork.InRoom)
+                PhotonNetwork.LeaveRoom();
+            if(PhotonNetwork.InLobby)
+                PhotonNetwork.LeaveLobby();
         }
     }
 }
