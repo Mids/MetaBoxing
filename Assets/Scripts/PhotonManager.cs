@@ -66,10 +66,10 @@ namespace MetaBoxing
             var points = GameObject.Find("SpawnPoints").GetComponentsInChildren<Transform>();
             int idx = PhotonNetwork.CurrentRoom.PlayerCount;
 
-// #if UNITY_EDITOR
-//             PlayerPrefs.SetInt("IS3PP", 1);
-//             PlayerPrefs.SetInt("ISPHYSICS", 0);
-// #endif
+#if UNITY_EDITOR
+            PlayerPrefs.SetInt("IS3PP", 1);
+            PlayerPrefs.SetInt("ISPHYSICS", 0);
+#endif
 
             if (PlayerPrefs.GetInt("ISPHYSICS") == 1)
                 PhotonNetwork.Instantiate("Player", points[idx].position, points[idx].rotation);
