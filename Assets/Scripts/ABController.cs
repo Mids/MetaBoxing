@@ -11,7 +11,7 @@ namespace MetaBoxing
         public bool isLeft = false;
         public bool isRight = false;
 
-        private ArticulationBody _ab;
+        public ArticulationBody _ab;
         private float _defaultAngle;
 
         private void Start()
