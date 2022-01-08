@@ -19,6 +19,7 @@ namespace MetaBoxing
 
         private Vector3 _contactPoint;
         private float _defaultStiff;
+        private float _defaultDamping;
         private readonly float _recoveryTime = 1f;
 
 
@@ -27,6 +28,7 @@ namespace MetaBoxing
             isMyself = gameObject.GetComponentInParent<PhotonView>().IsMine;
             _body = GetComponent<ArticulationBody>();
             _defaultStiff = _body.xDrive.stiffness;
+            _defaultStiff = _body.xDrive.damping;
         }
 
         private void OnCollisionEnter(Collision other)
@@ -47,10 +49,12 @@ namespace MetaBoxing
 
                 var xDrive = _body.xDrive;
                 xDrive.stiffness = 0;
+                xDrive.damping = 0;
                 _body.xDrive = xDrive;
 
                 var zDrive = _body.zDrive;
                 zDrive.stiffness = 0;
+                zDrive.damping = 0;
                 _body.zDrive = zDrive;
 
                 _contactPoint = other.GetContact(0).point;
@@ -70,10 +74,12 @@ namespace MetaBoxing
             {
                 var xDrive = _body.xDrive;
                 xDrive.stiffness += _defaultStiff * Time.fixedDeltaTime / _recoveryTime;
+                xDrive.damping += _defaultDamping * Time.fixedDeltaTime / _recoveryTime;
                 _body.xDrive = xDrive;
 
                 var zDrive = _body.zDrive;
                 zDrive.stiffness += _defaultStiff * Time.fixedDeltaTime / _recoveryTime;
+                zDrive.damping += _defaultDamping * Time.fixedDeltaTime / _recoveryTime;
                 _body.zDrive = zDrive;
             }
         }

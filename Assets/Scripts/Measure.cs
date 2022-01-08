@@ -25,6 +25,11 @@ public class Measure : MonoBehaviour
     private void Start()
     {
         _abList = GetComponentsInChildren<ABController>().ToList();
+
+        if (GetComponentInParent<PhotonView>().IsMine == true)
+        {
+            enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -67,3 +72,4 @@ public class Measure : MonoBehaviour
         }
     }
 }
+
